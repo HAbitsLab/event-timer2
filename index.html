@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Timer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-8 bg-gray-100">
+    <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4">Wireless and Mobile Health Event Timer</h1>
+        <div id="currentEventName" class="text-3xl font-bold mb-2">--</div>
+        <div id="timer" class="text-6xl font-mono mb-4">00:00:00</div>
+        <button id="startTimer" class="bg-green-500 text-white px-8 py-4 mb-8" disabled>Start</button>
+    </div>
+
+    <div class="flex justify-center space-x-10">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <input type="text" id="eventName" placeholder="Event Name" class="border p-2 w-full mb-2">
+            <input type="number" id="eventDuration" placeholder="Duration (seconds)" class="border p-2 w-full mb-4">
+            <button id="addEvent" class="bg-blue-500 text-white px-4 py-2 w-full">Add Event</button>
+            
+            <div id="eventsList" class="mt-4">
+                <h2 class="text-lg mb-2">Events List</h2>
+                <div class="max-h-64 overflow-y-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-4 py-2">Name</th>
+                                <th class="px-4 py-2">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventsUl">
+                            <!-- Events will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3 class="text-lg mt-4">Event JSON</h3>
+            <textarea id="importJsonText" placeholder="JSON will be updated here..." class="border p-2 w-full mt-4 h-32"></textarea>
+            <button id="importJson" class="bg-blue-500 text-white px-4 py-2 mt-2 w-full">Import Events</button>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="mb-4">
+                <table class="w-full text-left" id="eventTable">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="px-4 py-2">Name</th>
+                            <th class="px-4 py-2">Start</th>
+                            <th class="px-4 py-2">End</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Timer events will be listed here -->
+                    </tbody>
+                </table>
+            </div>
+            <button id="exportCsv" class="bg-gray-500 text-white px-4 py-2 mt-4 w-full">Export as CSV</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
